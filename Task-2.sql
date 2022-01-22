@@ -126,7 +126,8 @@
 --hemin authorun elaqeli oldugu kitablarin icerisindeki max pagecount deyeri
 	
 	
-
+	Create View usv_GetAllBooks_Id_FullName_BooksCount_MaxPageCount
+	As
     Select a.Id,(a.Name+' '+a.Surname) 'FullName',
 		Count((a.Name+' '+a.Surname)) 'BooksCount' ,
 		MAX(b.PageCount) 'MaxPageCount' 
@@ -134,6 +135,9 @@
    join Books b
 		on a.Id=b.AuthorsID
 		group by (a.Name+' '+a.Surname),a.Id
+
+	--Test View
+	Select * from usv_GetAllBooks_Id_FullName_BooksCount_MaxPageCount
 		
 	
    
